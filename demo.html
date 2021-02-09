@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <button class="button" type="button" id="show">show</button>
+        <button class="button" type="button" id="hienthi">hien thi</button>
+    </div>
+</body>
+<script>
+    var show = document.querySelector("#show");
+    var hienthi = document.querySelector("#hienthi");
+    show.addEventListener("click", function(event) {
+        Notification.requestPermission(function(permision) {
+            console.log(permision);
+        });
+    });
+    document.getElementById("hienthi").addEventListener("click", function(event){
+        if (Notification.permission == "default") {
+            alert("ban phai cap quyen");
+        } else {
+        notifi =  new Notification("ban co muon hien thi thong bao", {
+            body : "body",
+            title : "title"
+        });
+        notifi.onclick = function() {
+            window.location.href = this.tag;
+        }
+    } 
+    });
+    // console.log(show);
+</script>
+</html>
